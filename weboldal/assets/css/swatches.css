@@ -1,0 +1,103 @@
+.preview-wrap{
+  background:#f5f5f5;
+  border-radius:16px;
+  padding:20px;
+}
+
+.preview{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+}
+
+.configurator{ display:flex; flex-direction:column; gap:18px; }
+.group-label{ font-weight:600; margin-bottom:8px; }
+
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* hide radios but keep them accessible */
+.options input[type="radio"]{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid #ddd;
+  border-radius:999px;
+  background:#fff;
+  cursor:pointer;
+  user-select:none;
+}
+
+.options input[type="radio"]:checked + .pill{
+  border-color:#111;
+  box-shadow:0 0 0 2px rgba(0,0,0,.08);
+}
+
+.swatch{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:2px solid white;
+  box-shadow:0 0 0 1px rgba(0,0,0,.15);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  display:inline-block;
+}
+
+.swatch.solid{
+  background-image:none;
+  background:var(--solid);
+}
+
+.preview-wrap {
+  max-width: 600px;   /* vagy 500px, amit szeretnél */
+  margin: 0 auto;
+}
+
+.preview {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.preview {
+  max-height: 500px;
+  object-fit: contain;
+}
+
+/* mobile layout */
+.nav-actions{
+  margin-left:auto;
+  gap:6px;
+}
+
+/* desktop layout */
+@media (min-width:992px){
+
+  .nav-actions{
+    order:3;
+    margin-left:auto;
+  }
+
+  .navbar-collapse{
+    order:2;
+  }
+
+  .navbar-brand{
+    order:1;
+  }
+
+}

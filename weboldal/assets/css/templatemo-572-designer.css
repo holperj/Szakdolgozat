@@ -335,7 +335,7 @@ button:focus:not(:focus-visible) {
 
 @media (min-width: 576px) {
   .main-banner {
-    padding: 270px 0px 400px 0px;
+    padding: 150px 0px 300px 0px;
   }
 }
 
@@ -353,7 +353,7 @@ button:focus:not(:focus-visible) {
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .main-banner h2 em {
