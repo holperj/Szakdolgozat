@@ -110,7 +110,7 @@ https://templatemo.com/tm-572-designer
                     <h2>Személyreszabás</h2>
                 </div>
                 <div class="group">
-                    <div class="group-label">Szín</div>
+                    <div class="group-label">Szín:</div>
                     <div class="options">
                         <input type="radio" name="color" id="grey" value="grey" checked>
                         <label for="grey" class="pill">
@@ -132,8 +132,12 @@ https://templatemo.com/tm-572-designer
                         </label>
                     </div>
                 </div>
+                <div class="group-label">Ár:</div>
+                <div class="group-label text-end" style="font-size: 22px;">
+                  129 000 Ft
+                </div>
                 <div class="group">
-                    <div class="d-grid gap-2 mt-4">
+                    <div class="d-grid gap-2 mt-2">
                         <button id="addToCart" class="main-button">
                             Kosárba helyezés
                         </button>
@@ -342,13 +346,16 @@ const DISPLAY_NAMES = {
     "custom": "Egyéni"
   },
   price: {
-    189000: "189000 Ft",
-    215000: "215000 Ft",
-    241000: "241000 Ft",
-    129000: "129000 Ft",
-    99000: "99000 Ft",
-    59000: "59000 Ft",
-    32000: "32000 Ft"
+    189000: "189 000 Ft",
+    215000: "215 000 Ft",
+    241000: "241 000 Ft",
+    129000: "129 000 Ft",
+    99000: "99 000 Ft",
+    59000: "59 000 Ft",
+    32000: "32 000 Ft",
+    1400000: "1 400 000 Ft",
+    2150000: "2 150 000 Ft",
+    3410000: "3 410 000 Ft",
   }
 };
 
@@ -362,7 +369,7 @@ const PRODUCTS = {
     price: {
       "120": 189000,
       "160": 215000,
-      "180": 241000
+      "200": 241000
     },
     optionNames: ["color","legs"],
     saveOptions: ["color","legs","size"],
@@ -384,6 +391,11 @@ const PRODUCTS = {
   MEETTABLEX: {
     sku: "MEETTABLEX",
     name: "MeetTable X",
+    price: {
+      "400": 1400000,
+      "600": 2150000,
+      "800": 3410000
+    },
     optionNames: ["color","line"],
     saveOptions: ["color","line","size"],
     images: {
@@ -413,6 +425,13 @@ const PRODUCTS = {
       grey:  "assets/images/products/ergochair_pro_grey.jpg"
     },
     placeholder: "assets/images/products/ergochair_pro_placeholder.jpg"
+  },
+
+  ERGOCHAIRAIR: {
+    price: 99000,
+    sku: "ERGOCHAIRAIR",
+    name: "Ergochair Air",
+    placeholder: "assets/images/products/ergochair_air_preview.jpg",
   },
 
   ACOUSTICPANEL: {

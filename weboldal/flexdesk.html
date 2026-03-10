@@ -117,7 +117,7 @@ https://templatemo.com/tm-572-designer
                     <h2>Személyreszabás</h2>
                 </div>
                 <div class="group">
-                    <div class="group-label">Asztallap</div>
+                    <div class="group-label">Asztallap:</div>
                     <div class="options">
                         <input type="radio" name="color" id="oak" value="oak" checked>
                         <label for="oak" class="pill">
@@ -138,7 +138,7 @@ https://templatemo.com/tm-572-designer
                     </div>
                 </div>
                 <div class="group">
-                    <div class="group-label">Láb szín</div>
+                    <div class="group-label">Láb szín:</div>
                     <div class="options">
                         <input type="radio" name="legs" id="blackleg" value="blackleg" checked>
                         <label for="blackleg" class="pill">
@@ -151,7 +151,7 @@ https://templatemo.com/tm-572-designer
                     </div>
                 </div>
                 <div class="group">
-                    <div class="group-label">Méret</div>
+                    <div class="group-label">Méret:</div>
                     <div class="options">
                         <input type="radio" name="size" id="size120" value="120" checked>
                         <label for="size120" class="pill">120 cm</label>
@@ -159,15 +159,18 @@ https://templatemo.com/tm-572-designer
                         <label for="size160" class="pill">160 cm</label>
                         <input type="radio" name="size" id="size200" value="200">
                         <label for="size200" class="pill">200 cm</label>
+                        <input type="radio" name="size" id="sizecustom" value="custom">
+                        <label for="sizecustom" class="pill">Egyéni</label>
                     </div>
+                </div>
+                <div class="group-label">Ár:</div>
+                <div class="group-label text-end" style="font-size: 22px;">
+                  <span id="productPrice">189 000 Ft</span>
                 </div>
                 <div class="group">
                     <div class="d-grid gap-2 mt-4">
                         <button id="addToCart" class="main-button">
                             Kosárba helyezés
-                        </button>
-                        <button class="main-button">
-                            <a href="planning.html" style="color: white;">Egyedi méret rendelése</a>
                         </button>
                         <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer" aria-controls="cartDrawer">
                             Kosár megnyitása
@@ -375,13 +378,16 @@ const DISPLAY_NAMES = {
     "custom": "Egyéni"
   },
   price: {
-    189000: "189000 Ft",
-    215000: "215000 Ft",
-    241000: "241000 Ft",
-    129000: "129000 Ft",
-    99000: "99000 Ft",
-    59000: "59000 Ft",
-    32000: "32000 Ft"
+    189000: "189 000 Ft",
+    215000: "215 000 Ft",
+    241000: "241 000 Ft",
+    129000: "129 000 Ft",
+    99000: "99 000 Ft",
+    59000: "59 000 Ft",
+    32000: "32 000 Ft",
+    1400000: "1 400 000 Ft",
+    2150000: "2 150 000 Ft",
+    3410000: "3 410 000 Ft",
   }
 };
 
@@ -395,7 +401,7 @@ const PRODUCTS = {
     price: {
       "120": 189000,
       "160": 215000,
-      "180": 241000
+      "200": 241000
     },
     optionNames: ["color","legs"],
     saveOptions: ["color","legs","size"],
@@ -417,6 +423,11 @@ const PRODUCTS = {
   MEETTABLEX: {
     sku: "MEETTABLEX",
     name: "MeetTable X",
+    price: {
+      "400": 1400000,
+      "600": 2150000,
+      "800": 3410000
+    },
     optionNames: ["color","line"],
     saveOptions: ["color","line","size"],
     images: {
@@ -432,6 +443,13 @@ const PRODUCTS = {
       oak: "assets/images/swatches/oak.jpg",
       walnut: "assets/images/swatches/walnut.jpg"
     }
+  },
+
+    ERGOCHAIRAIR: {
+    price: 99000,
+    sku: "ERGOCHAIRAIR",
+    name: "Ergochair Air",
+    placeholder: "assets/images/products/ergochair_air_preview.jpg",
   },
 
   ERGOCHAIRPRO: {
@@ -711,6 +729,31 @@ function applySwatchBackgrounds() {
   });
 }
 
+function updateDisplayedPrice() {
+  const priceEl = document.getElementById("productPrice");
+  if (!priceEl || !PRODUCT) return;
+
+  if (typeof PRODUCT.price === "number") {
+    priceEl.textContent = formatPrice(PRODUCT.price);
+    return;
+  }
+
+  const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
+
+  if (!selectedSize) {
+    priceEl.textContent = "";
+    return;
+  }
+
+  const selectedPrice = PRODUCT.price?.[selectedSize];
+
+  if (selectedPrice != null) {
+    priceEl.textContent = formatPrice(selectedPrice);
+  } else {
+    priceEl.textContent = "Ajánlatkérés";
+  }
+}
+
 /* =========================
    5) INIT / EVENTS
    ========================= */
@@ -725,6 +768,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applySwatchBackgrounds();
   updatePreviewImage();
+  updateDisplayedPrice();
   renderCart();
 
   const watchNames = PRODUCT
@@ -732,9 +776,12 @@ document.addEventListener("DOMContentLoaded", () => {
     : [];
 
   watchNames.forEach(n => {
-    document.querySelectorAll(`input[name="${n}"]`).forEach(inp => {
-      inp.addEventListener("change", updatePreviewImage);
+  document.querySelectorAll(`input[name="${n}"]`).forEach(inp => {
+    inp.addEventListener("change", () => {
+      updatePreviewImage();
+      updateDisplayedPrice();
     });
+  });
   });
 
   const addBtn = document.getElementById("addToCart");

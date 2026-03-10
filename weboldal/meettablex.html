@@ -159,16 +159,18 @@ https://templatemo.com/tm-572-designer
                         <label for="size600" class="pill">600 cm</label>
                         <input type="radio" name="size" id="size800" value="800">
                         <label for="size800" class="pill">800 cm</label>
+                        <input type="radio" name="size" id="sizecustom" value="custom">
+                        <label for="sizecustom" class="pill">Egyéni</label>
                     </div>
                 </div>
-                        <!-- BUTTONS (beneath the options on the side) -->
+                <div class="group-label">Ár:</div>
+                <div class="group-label text-end" style="font-size: 22px;">
+                  <span id="productPrice">189 000 Ft</span>
+                </div>
                 <div class="group">
                     <div class="d-grid gap-2 mt-4">
                         <button id="addToCart" class="main-button">
                             Kosárba helyezés
-                        </button>
-                        <button class="main-button">
-                            <a href="planning.html" style="color: white;">Egyedi méret rendelése</a>
                         </button>
                         <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer" aria-controls="cartDrawer">
                             Kosár megnyitása
@@ -372,16 +374,20 @@ const DISPLAY_NAMES = {
     "120": "120 cm",
     "160": "160 cm",
     "180": "180 cm",
-    "200": "200 cm"
+    "200": "200 cm",
+    "custom": "Egyéni"
   },
   price: {
-    189000: "189000 Ft",
-    215000: "215000 Ft",
-    241000: "241000 Ft",
-    129000: "129000 Ft",
-    99000: "99000 Ft",
-    59000: "59000 Ft",
-    32000: "32000 Ft"
+    189000: "189 000 Ft",
+    215000: "215 000 Ft",
+    241000: "241 000 Ft",
+    129000: "129 000 Ft",
+    99000: "99 000 Ft",
+    59000: "59 000 Ft",
+    32000: "32 000 Ft",
+    1400000: "1 400 000 Ft",
+    2150000: "2 150 000 Ft",
+    3410000: "3 410 000 Ft",
   }
 };
 
@@ -395,7 +401,7 @@ const PRODUCTS = {
     price: {
       "120": 189000,
       "160": 215000,
-      "180": 241000
+      "200": 241000
     },
     optionNames: ["color","legs"],
     saveOptions: ["color","legs","size"],
@@ -417,6 +423,11 @@ const PRODUCTS = {
   MEETTABLEX: {
     sku: "MEETTABLEX",
     name: "MeetTable X",
+    price: {
+      "400": 1400000,
+      "600": 2150000,
+      "800": 3410000
+    },
     optionNames: ["color","line"],
     saveOptions: ["color","line","size"],
     images: {
@@ -432,6 +443,13 @@ const PRODUCTS = {
       oak: "assets/images/swatches/oak.jpg",
       walnut: "assets/images/swatches/walnut.jpg"
     }
+  },
+  
+    ERGOCHAIRAIR: {
+    price: 99000,
+    sku: "ERGOCHAIRAIR",
+    name: "Ergochair Air",
+    placeholder: "assets/images/products/ergochair_air_preview.jpg",
   },
 
   ERGOCHAIRPRO: {
@@ -474,9 +492,9 @@ const PRODUCTS = {
     optionNames: ["color"],
     saveOptions: ["color"],
     images: {
-      wood:  "assets/images/products/smartstore_wood.jpg",
-      black: "assets/images/products/smartstore_black.jpg",
-      white: "assets/images/products/smartstore_white.jpg"
+      wood:    "assets/images/products/smartstore_wood.jpg",
+      black:  "assets/images/products/smartstore_black.jpg",
+      white:   "assets/images/products/smartstore_white.jpg"
     },
     placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
@@ -633,80 +651,18 @@ function formatConfig(cfg) {
     .join(" • ");
 }
 
-function renderCheckout() {
-  const cart = loadCart();
-
-  const wrap = document.getElementById("checkoutItems");
-  const totalItems = document.getElementById("checkoutTotalItems");
-  const totalPrice = document.getElementById("checkoutTotalPrice");
-  const quoteNotice = document.getElementById("checkoutQuoteNotice");
-
-  if (!wrap || !totalItems || !totalPrice || !quoteNotice) return;
-
-  wrap.innerHTML = "";
-
-  if (cart.length === 0) {
-    wrap.innerHTML = `<div class="text-muted">Nincs termék a kosárban.</div>`;
-    totalItems.textContent = "0 db";
-    totalPrice.textContent = "0 Ft";
-    quoteNotice.classList.add("d-none");
-    return;
-  }
-
-  const summary = getCartSummary(cart);
-
-  cart.forEach((item) => {
-    const unitPrice = getItemUnitPrice(item);
-    const itemPriceText = unitPrice === null
-      ? "Ajánlatkérés szükséges"
-      : `${formatPrice(unitPrice)} / db`;
-
-    const row = document.createElement("div");
-    row.className = "border rounded-3 p-3";
-    row.innerHTML = `
-      <div class="d-flex gap-3">
-        <img src="${item.img || 'assets/images/products/flexdesk_placeholder.jpg'}"
-             alt=""
-             style="width:70px;height:70px;object-fit:cover;border-radius:10px;background:#f5f5f5;">
-        <div class="flex-grow-1">
-          <div class="fw-semibold">${item.name}</div>
-          ${item.config ? `<div class="text-muted small mt-1">${formatConfig(item.config)}</div>` : ``}
-          <div class="small mt-1">Mennyiség: <strong>${item.qty}</strong></div>
-          <div class="fw-semibold mt-2">${itemPriceText}</div>
-        </div>
-      </div>
-    `;
-    wrap.appendChild(row);
-  });
-
-  totalItems.textContent = `${summary.totalQty} db`;
-
-  if (summary.quoteNeeded) {
-    totalPrice.textContent = "Ajánlatkérés szükséges";
-    quoteNotice.classList.remove("d-none");
-  } else {
-    totalPrice.textContent = formatPrice(summary.totalPrice);
-    quoteNotice.classList.add("d-none");
-  }
-}
-
 function renderCart() {
   const cart = loadCart();
   updateBadges(cart);
 
   const wrap = document.getElementById("cartItems");
   const empty = document.getElementById("cartEmpty");
-
-  if (!wrap || !empty) {
-    renderCheckout();
-    return;
-  }
+  if (!wrap || !empty) return;
 
   wrap.innerHTML = "";
 
   if (cart.length === 0) {
     empty.style.display = "block";
-    renderCheckout();
     return;
   }
 
@@ -736,8 +692,6 @@ function renderCart() {
     `;
     wrap.appendChild(row);
   });
-
-  renderCheckout();
 }
 
 /* =========================
@@ -752,7 +706,6 @@ function getSelectedValues(names) {
 }
 
 function buildImageKey(selected) {
-  if (!PRODUCT) return "";
   const parts = (PRODUCT.optionNames || []).map(n => selected[n] || "");
   if (parts.some(p => !p)) return "";
   return parts.join("|");
@@ -776,6 +729,31 @@ function applySwatchBackgrounds() {
   });
 }
 
+function updateDisplayedPrice() {
+  const priceEl = document.getElementById("productPrice");
+  if (!priceEl || !PRODUCT) return;
+
+  if (typeof PRODUCT.price === "number") {
+    priceEl.textContent = formatPrice(PRODUCT.price);
+    return;
+  }
+
+  const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
+
+  if (!selectedSize) {
+    priceEl.textContent = "";
+    return;
+  }
+
+  const selectedPrice = PRODUCT.price?.[selectedSize];
+
+  if (selectedPrice != null) {
+    priceEl.textContent = formatPrice(selectedPrice);
+  } else {
+    priceEl.textContent = "Ajánlatkérés";
+  }
+}
+
 /* =========================
    5) INIT / EVENTS
    ========================= */
@@ -790,6 +768,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applySwatchBackgrounds();
   updatePreviewImage();
+  updateDisplayedPrice();
   renderCart();
 
   const watchNames = PRODUCT
@@ -797,9 +776,12 @@ document.addEventListener("DOMContentLoaded", () => {
     : [];
 
   watchNames.forEach(n => {
-    document.querySelectorAll(`input[name="${n}"]`).forEach(inp => {
-      inp.addEventListener("change", updatePreviewImage);
+  document.querySelectorAll(`input[name="${n}"]`).forEach(inp => {
+    inp.addEventListener("change", () => {
+      updatePreviewImage();
+      updateDisplayedPrice();
     });
+  });
   });
 
   const addBtn = document.getElementById("addToCart");
@@ -868,47 +850,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log("CHECKOUT CART:", cart);
       alert("Checkout (demo): a kosár tartalma a konzolba lett kiírva.");
-    });
-  }
-
-  const checkoutForm = document.getElementById("checkoutForm");
-  if (checkoutForm) {
-    checkoutForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const cart = loadCart();
-
-      if (cart.length === 0) {
-        alert("A kosár üres.");
-        return;
-      }
-
-      const summary = getCartSummary(cart);
-
-      const orderData = {
-        customer: {
-          firstName: document.getElementById("firstName")?.value || "",
-          lastName: document.getElementById("lastName")?.value || "",
-          email: document.getElementById("email")?.value || "",
-          phone: document.getElementById("phone")?.value || "",
-          company: document.getElementById("company")?.value || "",
-          address: document.getElementById("address")?.value || "",
-          zip: document.getElementById("zip")?.value || "",
-          city: document.getElementById("city")?.value || "",
-          country: document.getElementById("country")?.value || "",
-          note: document.getElementById("note")?.value || ""
-        },
-        cart,
-        summary
-      };
-
-      console.log("CHECKOUT ORDER:", orderData);
-
-      if (summary.quoteNeeded) {
-        alert("Az igény elküldve. A kosár ajánlatkérős terméket is tartalmaz.");
-      } else {
-        alert("A rendelés elküldve.");
-      }
     });
   }
 });
