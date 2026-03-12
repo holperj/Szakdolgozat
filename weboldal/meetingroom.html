@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
 
@@ -11,181 +11,152 @@
     <title>DesignOffice Kft. </title>
     <link rel="icon" type="image/png" href="assets/images/favicon2.png">
 
-        <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-572-designer.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="assets/css/swatches.css">
-<!--
 
-TemplateMo 572 Designer
-
-https://templatemo.com/tm-572-designer
-
--->
 </head>
 
 <body>
 
-    <div class="loader">
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<div class="loader">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         width="34px" height="40px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
         <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
         <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.8s" repeatCount="indefinite" />
         </rect>
-        <rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+        <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
         <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
         </rect>
-        <rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+        <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
         <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
         <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
         </rect>
-        </svg>
-    </div>
+    </svg>
+</div>
 
 <header id="#top">
-<nav class="main-navigation navbar navbar-expand-lg navbar-light">
+    <nav class="main-navigation navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/feher_f_logo.png" alt="">
+            </a>
+            <div class="nav-actions d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="btn btn-outline-light position-relative cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Bútorok</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="packages.html">Csomagjaink</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Rólunk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Kapcsolat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="page-banner change-name">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/images/feher_f_logo.png" alt="">
-        </a>
-        <div class="nav-actions d-flex align-items-center">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <button class="btn btn-outline-light position-relative cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Bútorok</a></li>
-                <li class="nav-item"><a class="nav-link  active" href="packages.html">Csomagjaink</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">Rólunk</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Kapcsolat</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-    </header>
-
-
-    <div class="page-banner change-name">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="header-text">
-                        <h2><em>Nézze meg</em> felkapott Csomagjainkat</h2>
-                        <p>Válasszon népszerű csomagjaink eggyike közül, vagy inspirálódjon saját irodája megtervezéséhez, amit <a href="contact.html" style="color: #FD565B; font-weight: bolder;">velünk</a> könnyen megvalósíthat </p>
-                    </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="header-text">
+                    <h2><em>Tárgyalóterem<br></em>Meeting Space</h2>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
+<section class="interior-design">
+    <div class="container expanded">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Meeting Space<br><em> Professzionális tárgyalók modern és reprezentatív kialakítással</em>.</h2>
+                </div>
+                <div class="left-image">
+                    <img src="assets/images/meeting_room.jpg" alt="">
+                </div>
+            </div>
 
-    <section class="trending-page">
-        <div class="container expanded">
-            <div class="col-lg-12">
-                <div class="row grid">
-                    <div class="grid-sizer"></div>
-                    <div class="grid-item">
-                        <div class="trending-item">
-                            <div class="thumb">
-                                <span class="banner">Privát iroda</span>
-                                <div class="hover-effect">
-                                    <div class="inner-content">
-                                        <a href="private_office.html"><h4>Privát iroda</h4></a>
-                                        <a class="icon" href="private_office.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                                        </svg></a>
-                                    </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="right-content">
+                    <p>A <strong>Meeting Space</strong> tárgyalótermi csomag olyan vállalkozások számára készült, amelyek számára a professzionális megjelenés, a kényelmes megbeszélési környezet és a funkcionális térszervezés egyaránt fontos. A csomag ideális választás kisebb és nagyobb tárgyalók kialakításához, ahol kiemelt szerepet kap a reprezentatív design, az ergonómia, a praktikus tárolás és a megfelelő akusztikai komfort.</p>
+
+                    <div class="accordion" id="accordionExample">
+                        <h4>Csomag tartalma:</h4>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    MeetTable X – A tárgyaló központi eleme
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>A <strong>MeetTable X</strong> tárgyalóasztal a csomag meghatározó eleme, amely elegáns és letisztult megjelenésével professzionális környezetet teremt. A nagy méretű asztallap ideális többfős megbeszélésekhez, prezentációkhoz és stratégiai egyeztetésekhez, míg a középső díszcsík vizuálisan is kiemeli az asztal karakterét.</p>
                                 </div>
-                                <img src="assets/images/private_office1.jpg" alt="">
                             </div>
                         </div>
-                    </div>
-                    <div class="grid-item">
-                        <div class="trending-item">
-                            <div class="thumb">
-                                <span class="banner">Nyílt iroda</span>
-                                <div class="hover-effect">
-                                    <div class="inner-content">
-                                        <a href="open_office.html"><h4>Nyílt iroda</h4></a>
-                                        <a class="icon" href="open_office.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                                        </svg></a>
-                                    </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    ErgoChair Air – Könnyed ülőhely kiegészítő zónákhoz
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Az <strong>ErgoChair Air</strong> kiváló választás olyan kiegészítő ülőhelyekhez, ahol fontos a könnyed megjelenés és a komfortos használat. Ideális lehet kisebb egyeztető sarkokba, várakozási pontokhoz vagy a tárgyaló kapcsolódó munkaterületeire.</p>
                                 </div>
-                                <img src="assets/images/open_office1.jpg" alt="">
                             </div>
                         </div>
-                    </div>
-                    <div class="grid-item">
-                        <div class="trending-item">
-                            <div class="thumb">
-                                <span class="banner">Tárgyaló terem</span>
-                                <div class="hover-effect">
-                                    <div class="inner-content">
-                                        <a href="meetingroom.html"><h4>Tárgyaló terem</h4></a>
-                                        <a class="icon" href="meetingroom.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                                        </svg></a>
-                                    </div>
-                                </div>
-                                <img src="assets/images/meeting_room.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-item">
-                        <div class="trending-item">
-                            <div class="thumb">
-                                <span class="banner">Fülkés iroda</span>
-                                <div class="hover-effect">
-                                    <div class="inner-content">
-                                        <a href="cubicle_office.html"><h4>Fülkés iroda</h4></a>
-                                        <a class="icon" href="cubicle_office.html"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                                        </svg></a>
-                                    </div>
-                                </div>
-                                <img src="assets/images/cubicle.jpg" alt="">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
 
-    <section class="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2>Felbérelne minket egy projektre?</h2>
-                </div>
-                <div class="col-lg-4">
-                    <div class="white-button">
-                        <a href="#">Hívjon minket most!</a>
-                    </div>
+            <div style="padding-top: 40px; padding-left: 20px; text-align: justify; font-size: 16px;">
+                <p>A <strong>Meeting Space</strong> csomag ideális választás olyan cégek számára, ahol fontos a professzionális megjelenés, a hatékony kommunikáció és a kényelmes tárgyalási környezet. Különösen ajánlott vezetői tárgyalókba, ügyfélfogadó helyiségekbe, konferenciatermekbe és többfunkciós meeting szobákba, ahol az <strong>esztétika</strong>, a <strong>funkcionalitás</strong> és a <strong>komfort</strong> egyaránt meghatározó szempont.</p>
+
+                <p>Vegye fel velünk a kapcsolatot, és segítünk megtervezni az Ön cégéhez illeszkedő tárgyalótermi kialakítást. Szakértőink támogatást nyújtanak a tér <strong>optimalizálásában</strong>, a megfelelő bútorkombináció kiválasztásában, valamint a vállalati arculathoz illő <strong>modern és reprezentatív megjelenés</strong> kialakításában, hogy tárgyalója egyszerre legyen <strong>praktikus, kényelmes és bizalomépítő</strong>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>Felbérelne minket egy projektre?</h2>
+            </div>
+            <div class="col-lg-4">
+                <div class="white-button">
+                    <a href="#">Hívjon minket most!</a>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
 
 <footer class="no-margin-footer">
     <div class="container">
@@ -193,7 +164,7 @@ https://templatemo.com/tm-572-designer
             <div class="col-lg-4">
                 <div class="about-widget">
                     <img src="assets/images/footer_logo.png" alt="designer template by TemplateMo">
-                    <p>A DesignOffice Kft. egy dinamikusan fejlődő magyar középvállalat, amely ergonomikus, modern és testre szabott irodabútorok tervezésével, gyártásával és értékesítésével foglalkozik. </p>
+                    <p>A DesignOffice Kft. egy dinamikusan fejlődő magyar középvállalat, amely ergonomikus, modern és testre szabott irodabútorok tervezésével, gyártásával és értékesítésével foglalkozik.</p>
                 </div>
             </div>
             <div class="col-lg-2 offset-lg-2">
@@ -243,12 +214,13 @@ https://templatemo.com/tm-572-designer
                     </ul>
                 </div>
             </div>
+
             <div class="col-lg-6 offset-lg-6">
                 <h4>Iratkozz fel körlevelünkre!</h4>
                 <form id="subscribe" action="" method="get">
                     <div class="row">
                         <div class="col-lg-12">
-                            <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Írd be az email címed..." required=""> 
+                            <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Írd be az email címed..." required="">
                             <button type="submit" id="form-submit" class="text-button ">
                                 Küldés
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -259,12 +231,12 @@ https://templatemo.com/tm-572-designer
                     </div>
                 </form>
             </div>
+
             <div class="col-lg-12">
                 <div class="sub-footer">
                     <div class="row">
                         <div class="col-lg-6">
-                            <p>Copyright © 2025 DesignOffice Kft., Ltd. All Rights Reserved. 
-                            
+                            <p>Copyright © 2025 DesignOffice Kft., Ltd. All Rights Reserved.
                             <br>Design: <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
                         </div>
                         <div class="col-lg-6">
@@ -278,10 +250,10 @@ https://templatemo.com/tm-572-designer
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </footer>
-
 
 <!-- CART OFFCANVAS -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="cartDrawer" aria-labelledby="cartDrawerLabel">
@@ -325,9 +297,6 @@ https://templatemo.com/tm-572-designer
 </style>
 
 <!-- Scripts -->
-<!-- Bootstrap core JavaScript -->
-<!-- Scripts -->
-<!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/isotope.min.js"></script>
@@ -335,6 +304,7 @@ https://templatemo.com/tm-572-designer
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
 <script src="assets/js/custom.js"></script>
+
 <script>
 /* =========================
    0) GLOBAL LABELS / ALIASES
@@ -480,9 +450,9 @@ const PRODUCTS = {
     optionNames: ["color"],
     saveOptions: ["color"],
     images: {
-      wood:    "assets/images/products/smartstore_wood.jpg",
+      wood:   "assets/images/products/smartstore_wood.jpg",
       black:  "assets/images/products/smartstore_black.jpg",
-      white:   "assets/images/products/smartstore_white.jpg"
+      white:  "assets/images/products/smartstore_white.jpg"
     },
     placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
@@ -813,6 +783,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
-
 </body>
 </html>

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="assets/css/swatches.css">
 <!--
 
 TemplateMo 572 Designer
@@ -54,36 +55,31 @@ https://templatemo.com/tm-572-designer
 </div>
 
 <header id="#top">
-
-    <nav class="main-navigation navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/feher_f_logo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="main-navigation navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/images/feher_f_logo.png" alt="">
+        </a>
+        <div class="nav-actions d-flex align-items-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Főoldal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Rólunk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="planning.html">Tervezés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="packages.html">Csomagjaink</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Kapcsolat</a>
-                    </li>
-                </ul>
-            </div>
+            <button class="btn btn-outline-light position-relative cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </button>
         </div>
-    </nav>
-
-</header>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Bútorok</a></li>
+                <li class="nav-item"><a class="nav-link  active" href="packages.html">Csomagjaink</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">Rólunk</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Kapcsolat</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    </header>
 
     <div class="page-banner change-name">
         <div class="container">
