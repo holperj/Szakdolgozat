@@ -1,4 +1,3 @@
-
 /* ============================================================
    CHECKOUT PAGE SCRIPT
    ============================================================ */
@@ -8,7 +7,7 @@ function getCheckoutSummary(cart) {
   let totalPrice = 0;
   let quoteNeeded = false;
 
-  cart.forEach(item => {
+  (cart || []).forEach(item => {
     const qty = Number(item.qty) || 1;
     const unitPrice = item.price ?? null;
 
@@ -28,10 +27,10 @@ function formatCheckoutConfig(cfg) {
   if (!cfg) return "";
 
   return Object.entries(cfg)
-    .filter(([_, v]) => v !== undefined && v !== null && String(v).trim() !== "")
+    .filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== "")
     .map(([k, v]) => {
-      const label = LABELS[k] || k;
-      const displayValue = DISPLAY_NAMES[k]?.[String(v)] || v;
+      const label = LABELS?.[k] || k;
+      const displayValue = DISPLAY_NAMES?.[k]?.[String(v)] ?? v;
       return `<div><strong>${label}:</strong> ${displayValue}</div>`;
     })
     .join("");
@@ -68,30 +67,31 @@ function renderCheckout() {
       : `${formatPrice(unitPrice)} / db`;
 
     const row = document.createElement("div");
-    row.className = "border rounded-4 p-3 mb-3";
+    row.className = "cart-row border-bottom pb-3 mb-3";
 
     row.innerHTML = `
       <div class="d-flex gap-3 align-items-start">
         <img
-          src="${item.img || '/assets/images/products/flexdesk_placeholder.jpg'}"
+          class="cart-thumb"
+          src="${item.img || 'assets/images/products/flexdesk_placeholder.jpg'}"
           alt="${item.name || ''}"
           style="width:250px;height:auto;object-fit:cover;border-radius:12px;background:#f5f5f5;"
         >
 
         <div class="flex-grow-1">
-          <div class="fw-bold fs-5">${item.name || ""}</div>
+          <p class="cart-title mb-1" style="font-size:1.2rem;">${item.name || ""}</p>
 
           ${item.config ? `
-            <div class="text-muted mt-2" style="font-size: 0.98rem;">
+            <div class="cart-meta mb-2" style="font-size:0.98rem;">
               ${formatCheckoutConfig(item.config)}
             </div>
           ` : ""}
 
-          <div class="mt-2" style="font-size: 1rem;">
+          <div class="mt-2" style="font-size:1rem;">
             Mennyiség: <strong>${qty}</strong>
           </div>
 
-          <div class="fw-bold mt-2" style="font-size: 1.05rem;">
+          <div class="cart-price mt-2" style="font-size:1.05rem;">
             ${itemPriceText}
           </div>
         </div>
@@ -133,9 +133,9 @@ function initCheckoutPage() {
       console.log("CHECKOUT SUMMARY:", summary);
 
       if (summary.quoteNeeded) {
-        alert("Az igény rögzítve. A kosár ajánlatkérős terméket is tartalmaz.");
+        alert("Demo weboldal: a kosár ajánlatkérős terméket is tartalmaz.");
       } else {
-        alert("A rendelés demo módban rögzítve.");
+        alert("Demo weboldal: a rendelési összesítő megtekintve.");
       }
     });
   }

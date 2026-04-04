@@ -22,6 +22,9 @@ const DISPLAY_NAMES = {
     "160": "160 cm",
     "180": "180 cm",
     "200": "200 cm",
+    "400": "400 cm",
+    "600": "600 cm",
+    "800": "800 cm",
     "custom": "Egyéni"
   },
   price: {
@@ -38,9 +41,6 @@ const DISPLAY_NAMES = {
   }
 };
 
-/* =========================
-   1) PRODUCTS (ONLY EDIT THIS)
-   ========================= */
 const PRODUCTS = {
   FLEXDESK: {
     sku: "FLEXDESK",
@@ -50,20 +50,20 @@ const PRODUCTS = {
       "160": 215000,
       "200": 241000
     },
-    optionNames: ["color","legs"],
-    saveOptions: ["color","legs","size"],
+    optionNames: ["color", "legs"],
+    saveOptions: ["color", "legs", "size"],
     images: {
-      "oak|blackleg":    "/assets/images/products/flexdesk_oak_blackleg.jpg",
-      "oak|whiteleg":    "/assets/images/products/flexdesk_oak_whiteleg.jpg",
-      "walnut|blackleg": "/assets/images/products/flexdesk_walnut_blackleg.jpg",
-      "walnut|whiteleg": "/assets/images/products/flexdesk_walnut_whiteleg.jpg",
-      "black|blackleg":  "/assets/images/products/flexdesk_black_blackleg.jpg",
-      "black|whiteleg":  "/assets/images/products/flexdesk_black_whiteleg.jpg"
+      "oak|blackleg":    "assets/images/products/flexdesk_oak_blackleg.jpg",
+      "oak|whiteleg":    "assets/images/products/flexdesk_oak_whiteleg.jpg",
+      "walnut|blackleg": "assets/images/products/flexdesk_walnut_blackleg.jpg",
+      "walnut|whiteleg": "assets/images/products/flexdesk_walnut_whiteleg.jpg",
+      "black|blackleg":  "assets/images/products/flexdesk_black_blackleg.jpg",
+      "black|whiteleg":  "assets/images/products/flexdesk_black_whiteleg.jpg"
     },
-    placeholder: "/assets/images/products/flexdesk_placeholder.jpg",
+    placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
-      oak: "/assets/images/swatches/oak.jpg",
-      walnut: "/assets/images/swatches/walnut.jpg"
+      oak: "assets/images/swatches/oak.jpg",
+      walnut: "assets/images/swatches/walnut.jpg"
     }
   },
 
@@ -75,42 +75,42 @@ const PRODUCTS = {
       "600": 2150000,
       "800": 3410000
     },
-    optionNames: ["color","line"],
-    saveOptions: ["color","line","size"],
+    optionNames: ["color", "line"],
+    saveOptions: ["color", "line", "size"],
     images: {
-      "oak|blackline":    "/assets/images/products/meettable_oak_black.jpg",
-      "oak|whiteline":    "/assets/images/products/meettable_oak_white.jpg",
-      "walnut|blackline": "/assets/images/products/meettable_walnut_black.jpg",
-      "walnut|whiteline": "/assets/images/products/meettable_walnut_white.jpg",
-      "black|blackline":  "/assets/images/products/meettable_black_black.jpg",
-      "black|whiteline":  "/assets/images/products/meettable_black_white.jpg"
+      "oak|blackline":    "assets/images/products/meettable_oak_black.jpg",
+      "oak|whiteline":    "assets/images/products/meettable_oak_white.jpg",
+      "walnut|blackline": "assets/images/products/meettable_walnut_black.jpg",
+      "walnut|whiteline": "assets/images/products/meettable_walnut_white.jpg",
+      "black|blackline":  "assets/images/products/meettable_black_black.jpg",
+      "black|whiteline":  "assets/images/products/meettable_black_white.jpg"
     },
-    placeholder: "/assets/images/products/flexdesk_placeholder.jpg",
+    placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
-      oak: "/assets/images/swatches/oak.jpg",
-      walnut: "/assets/images/swatches/walnut.jpg"
+      oak: "assets/images/swatches/oak.jpg",
+      walnut: "assets/images/swatches/walnut.jpg"
     }
   },
 
-    ERGOCHAIRAIR: {
+  ERGOCHAIRAIR: {
     price: 99000,
     sku: "ERGOCHAIRAIR",
     name: "Ergochair Air",
-    placeholder: "/assets/images/products/ergochair_air_preview.jpg",
+    placeholder: "assets/images/products/ergochair_air.jpg"
   },
 
   ERGOCHAIRPRO: {
     price: 129000,
     sku: "ERGOCHAIRPRO",
-    name: "Ergoshair Pro",
+    name: "Ergochair Pro",
     optionNames: ["color"],
     saveOptions: ["color"],
     images: {
-      white: "/assets/images/products/ergochair_pro_white.jpg",
-      black: "/assets/images/products/ergochair_pro_black.jpg",
-      grey:  "/assets/images/products/ergochair_pro_grey.jpg"
+      white: "assets/images/products/ergochair_pro_white.jpg",
+      black: "assets/images/products/ergochair_pro_black.jpg",
+      grey:  "assets/images/products/ergochair_pro_grey.jpg"
     },
-    placeholder: "/assets/images/products/ergochair_pro_placeholder.jpg"
+    placeholder: "assets/images/products/ergochair_pro_placeholder.jpg"
   },
 
   ACOUSTICPANEL: {
@@ -120,15 +120,15 @@ const PRODUCTS = {
     optionNames: ["color"],
     saveOptions: ["color"],
     images: {
-      oak:    "/assets/images/products/accusticpanel_oak.jpg",
-      walnut: "/assets/images/products/accusticpanel_walnut.jpg",
-      black:  "/assets/images/products/accusticpanel_black.jpg",
-      grey:   "/assets/images/products/accusticpanel_grey.jpg"
+      oak:    "assets/images/products/accusticpanel_oak.jpg",
+      walnut: "assets/images/products/accusticpanel_walnut.jpg",
+      black:  "assets/images/products/accusticpanel_black.jpg",
+      grey:   "assets/images/products/accusticpanel_grey.jpg"
     },
-    placeholder: "/assets/images/products/flexdesk_placeholder.jpg",
+    placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
-      oak: "/assets/images/swatches/oak.jpg",
-      walnut: "/assets/images/swatches/walnut.jpg"
+      oak: "assets/images/swatches/oak.jpg",
+      walnut: "assets/images/swatches/walnut.jpg"
     }
   },
 
@@ -139,14 +139,15 @@ const PRODUCTS = {
     optionNames: ["color"],
     saveOptions: ["color"],
     images: {
-      wood:    "/assets/images/products/smartstore_wood.jpg",
-      black:  "/assets/images/products/smartstore_black.jpg",
-      white:   "/assets/images/products/smartstore_white.jpg"
+      wood:  "assets/images/products/smartstore_wood.jpg",
+      black: "assets/images/products/smartstore_black.jpg",
+      white: "assets/images/products/smartstore_white.jpg"
     },
-    placeholder: "/assets/images/products/flexdesk_placeholder.jpg",
+    placeholder: "assets/images/products/flexdesk_placeholder.jpg",
     swatchImages: {
-      oak: "/assets/images/swatches/oak.jpg",
-      walnut: "/assets/images/swatches/walnut.jpg"
+      wood:  "assets/images/swatches/oak.jpg",
+      black: "assets/images/swatches/black.jpg",
+      white: "assets/images/swatches/white.jpg"
     }
   }
 };

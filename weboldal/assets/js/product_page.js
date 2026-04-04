@@ -1,13 +1,10 @@
 /* ============================================================
-   PRODUCT PAGE LOGIC (FINAL)
+   PRODUCT PAGE LOGIC
    ============================================================ */
 
 function initProductPage() {
   if (!PRODUCT) return;
 
-  /* ---------------------------
-     SWATCH BACKGROUNDS
-  ---------------------------- */
   function applySwatchBackgroundsLocal() {
     const map = PRODUCT.swatchImages || {};
     document.querySelectorAll(".swatch[data-swatch]").forEach(el => {
@@ -18,24 +15,18 @@ function initProductPage() {
     });
   }
 
-  /* ---------------------------
-     PREVIEW IMAGE
-  ---------------------------- */
   function updatePreviewImageLocal() {
     const preview = document.getElementById("preview");
     if (!preview) return;
 
-    const selected = getSelectedValues(PRODUCT.optionNames);
+    const selected = getSelectedValues(PRODUCT.optionNames || []);
     const key = buildImageKey(selected);
 
     preview.src = (key && PRODUCT.images?.[key])
       ? PRODUCT.images[key]
-      : PRODUCT.placeholder;
+      : (PRODUCT.placeholder || "assets/images/products/flexdesk_placeholder.jpg");
   }
 
-  /* ---------------------------
-     PRICE UPDATE
-  ---------------------------- */
   function updateDisplayedPriceLocal() {
     const priceEl = document.getElementById("productPrice");
     if (!priceEl) return;
@@ -47,7 +38,7 @@ function initProductPage() {
 
     const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
     if (!selectedSize) {
-      priceEl.textContent = "";
+      priceEl.textContent = "Ajánlatkérés";
       return;
     }
 
@@ -55,9 +46,6 @@ function initProductPage() {
     priceEl.textContent = selectedPrice != null ? formatPrice(selectedPrice) : "Ajánlatkérés";
   }
 
-  /* ---------------------------
-     OPTION WATCHERS
-  ---------------------------- */
   const watchNames = Array.from(new Set([
     ...(PRODUCT.optionNames || []),
     ...(PRODUCT.saveOptions || [])
@@ -72,23 +60,27 @@ function initProductPage() {
     });
   });
 
-  /* ---------------------------
-     ADD TO CART
-  ---------------------------- */
   const addBtn = document.getElementById("addToCart");
-
   if (addBtn) {
     addBtn.addEventListener("click", () => {
-
       const selectedAll = getSelectedValues(watchNames);
-      const previewSrc = document.getElementById("preview")?.src || PRODUCT.placeholder;
+      const previewSrc = document.getElementById("preview")?.getAttribute("src") ||
+        PRODUCT.placeholder ||
+        "assets/images/products/flexdesk_placeholder.jpg";
 
       const selectedPrice = (typeof PRODUCT.price === "number")
         ? PRODUCT.price
-        : PRODUCT.price?.[selectedAll.size] ?? null;
+        : (PRODUCT.price?.[selectedAll.size] ?? null);
+
+      if (PRODUCT.saveOptions?.includes("size") && !selectedAll.size) {
+        alert("Kérjük válasszon méretet!");
+        return;
+      }
 
       const configToSave = {};
-      (PRODUCT.saveOptions || []).forEach(k => configToSave[k] = selectedAll[k]);
+      (PRODUCT.saveOptions || []).forEach(k => {
+        if (selectedAll[k]) configToSave[k] = selectedAll[k];
+      });
 
       addItemToCart({
         sku: PRODUCT.sku,
@@ -111,8 +103,4 @@ function initProductPage() {
   updateDisplayedPriceLocal();
 }
 
-document.addEventListener("readystatechange", () => {
-  if (document.readyState === "complete") {
-    initProductPage();
-  }
-});
+document.addEventListener("DOMContentLoaded", initProductPage);
